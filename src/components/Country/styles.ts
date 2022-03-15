@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+    @media (max-width: 700px) { 
+        padding: 0 1rem;
+    }
 `
 
 export const Content = styled.div`
@@ -9,6 +12,10 @@ export const Content = styled.div`
     justify-content: center;
     flex-direction: column;
     padding: 0 6rem;
+
+    @media (max-width: 700px) { 
+        padding: 0 1rem;
+    }
 `
 
 export const Header = styled.div`
@@ -18,6 +25,15 @@ export const Header = styled.div`
 
     height: 10rem;
     width: 100%;
+
+    @media (max-width: 700px) { 
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        margin: 2rem 0;
+        padding: 0 1rem;
+        height: 4rem;
+    }
 `
 
 export const BackButton = styled.button`
@@ -29,12 +45,14 @@ export const BackButton = styled.button`
     border-radius: 0.25rem;
     border: none;
     font-size: 1rem;
-    background: var(--dark-mode-text-light-mode-elements);
+    background: ${props => props.theme.colors.elements};
 
     img{
         width: 25px;
         height: 25px;
         margin: 1rem;
+        filter: ${props => props.theme.name === "dark" ? "invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%)" : ''}
+
     }
 
     transition: filter 0.1s;
@@ -48,6 +66,13 @@ export const About = styled.div`
     grid-template-columns: repeat(2, 1fr);
     height: 30rem;
     width: 100%;
+
+    @media (max-width: 700px) { 
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        flex-direction: column;
+        width: 100%;
+    }
 `
 
 export const Flag = styled.div`
@@ -56,9 +81,15 @@ export const Flag = styled.div`
     justify-content: left;
     width: 80%;
     height: 100%;
-    background: red;
     
     img{
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+@media (max-width: 700px) { 
         display: block;
         width: 100%;
         height: 100%;
@@ -74,6 +105,7 @@ export const Info = styled.div`
     width: 100%;
     height: 100%;
     padding: 2rem;
+    
 `
 
 export const InfoHeader = styled.div`
@@ -87,6 +119,13 @@ export const InfoDescription = styled.div`
 
     height: 60%;
     width: 100%;
+
+    @media (max-width: 700px) { 
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        flex-direction: column;
+        width: 100%;
+    }
 `
 
 export const Span = styled.div`
@@ -97,6 +136,8 @@ export const Span = styled.div`
     p{
         margin-left: 0.25rem;
     }
+
+    
 `
 
 export const LeftDescritpion = styled.div`
@@ -110,6 +151,11 @@ export const RightDescription = styled.div`
     align-items: left;
     flex-direction: column;
     margin-left: 4rem;
+
+    @media (max-width: 700px) { 
+        margin-top: 2rem;
+        margin-left: 0;
+    }
 `
 
 export const FooterDescription = styled.div`
@@ -118,14 +164,36 @@ export const FooterDescription = styled.div`
     justify-content: start;
     height: 10%;
     width: 100%;
+
+    @media (max-width: 700px) { 
+        display: none;
+    }
 `
+
+export const BorderList = styled.div`
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    margin-left: 1rem;
+
+    
+`
+
 export const SpanFooter = styled.div`
     display: flex;
+    align-items: center;
     justify-content: center;
-    background: var(--dark-mode-text-light-mode-elements);
     width: 4rem;
     height: 1.5rem;
     margin-left: 1rem;
-
+    background: ${props => props.theme.colors.elements};
     border-radius: 0.25rem;
+
+    @media (max-width: 700px) { 
+        margin-top: 1rem;
+        width: 6rem;
+        height: 2.5rem;
+    }
 `

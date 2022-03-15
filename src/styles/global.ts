@@ -6,14 +6,12 @@ export const GlobalStyle = createGlobalStyle`
     --dark-mode-elements: hsl(209, 23%, 22%);
     --dark-mode-background: hsl(207, 26%, 17%);
     --light-mode-text: hsl(200, 15%, 8%);
-    --light-mode-input: hsl(0, 0%, 52%);
     --light-mode-background: hsl(0, 0%, 90%);
     --dark-mode-text-light-mode-elements: hsl(0, 0%, 100%);
 }
     * {
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
     }
 
     html{
@@ -27,20 +25,20 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     body{
-        background: var(--light-mode-background);
-        -webkit-font-smoothing: antialiased;
+        background: ${props => props.theme.colors.backgroundColor};
+        
     }
 
     p, span, button {
         font-family: 'Nunito Sans', sans-serif;
         font-weight: 600;
-        color: var(--light-mode-text);
+        color: ${props => props.theme.colors.text};
     }
 
     h1, h2, h3, h4, h5, h6 {
         font-family: 'Nunito Sans', sans-serif;
         font-weight: 800;
-        color: var(--light-mode-text);
+        color: ${props => props.theme.colors.text};
     } 
 
     button{

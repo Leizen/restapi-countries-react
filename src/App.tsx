@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
+import { ThemeProvider } from "styled-components";
 import { Country } from "./components/Country";
 import { Header } from "./components/Header";
 import { Homepage } from "./components/Homepage";
 import { api, nameApi } from "./services/api";
 import { GlobalStyle } from "./styles/global";
+import light from "./themes/light";
+import dark from "./themes/dark";
 
 interface CountryProps {
   name: string;
@@ -45,6 +48,7 @@ interface CountryInfoProps {
 }
 
 function App() {
+  const [theme, setTheme] = useState(light);
   const [countries, setCountries] = useState<CountryProps[]>([]);
   const [filteredCountries, setFilteredCountries] = useState<CountryProps[]>(
     []
@@ -62,6 +66,10 @@ function App() {
     }
     countriesFetch();
   }, []);
+
+  function handleSetTheme() {
+    setTheme(theme.name === "light" ? dark : light);
+  }
 
   function handleSetHomepage() {
     setPage("homepage");
@@ -97,22 +105,24 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      {page === "homepage" ? (
-        <Homepage
-          filteredCountries={filteredCountries}
-          handleFilterCountry={handleFilterCountry}
-          handleSelectRegionFilter={handleSelectRegionFilter}
-          handleSelectCountry={handleSelectCountry}
-        />
-      ) : (
-        <Country
-          countryInfo={countryInfo}
-          handleSetHomepage={handleSetHomepage}
-        />
-      )}
+      <ThemeProvider theme={theme}>
+        <Header handleSetTheme={handleSetTheme} />
+        {page === "homepage" ? (
+          <Homepage
+            filteredCountries={filteredCountries}
+            handleFilterCountry={handleFilterCountry}
+            handleSelectRegionFilter={handleSelectRegionFilter}
+            handleSelectCountry={handleSelectCountry}
+          />
+        ) : (
+          <Country
+            countryInfo={countryInfo}
+            handleSetHomepage={handleSetHomepage}
+          />
+        )}
 
-      <GlobalStyle />
+        <GlobalStyle />
+      </ThemeProvider>
     </div>
   );
 }

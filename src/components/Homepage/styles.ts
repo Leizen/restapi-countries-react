@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+
 `
 
 export const Content = styled.div`
@@ -9,6 +10,10 @@ export const Content = styled.div`
     justify-content: space-between;
     flex-direction: column;
     padding: 0 6rem;
+
+    @media (max-width: 700px) { 
+        padding: 0 1rem;
+    }
 `
 
 export const Search = styled.div`
@@ -18,7 +23,7 @@ export const Search = styled.div`
 
     height: 8rem;
     width: 100%;
-    
+
 
     select{
         display: flex;
@@ -30,7 +35,20 @@ export const Search = styled.div`
         border-radius: 0.25rem;
         border: none;
         font-size: 1rem;
-        background: var(--dark-mode-text-light-mode-elements)
+        color: ${props => props.theme.colors.text};
+        background: ${props => props.theme.colors.elements};
+        @media (max-width: 700px) { 
+            margin-top: 2rem;
+        }
+        
+    }
+
+    @media (max-width: 700px) { 
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        margin: 2rem 0;
+        padding: 0 1rem;
     }
 `
 
@@ -40,12 +58,15 @@ export const Input = styled.div`
     height: 3rem;
     width: 30rem;
     border-radius: 0.25rem;
-    background: var(--dark-mode-text-light-mode-elements);
+    
+    background: ${props => props.theme.colors.elements};
 
     img {
         width: 20px;
         height: 20px;
         margin-left: 1rem;
+        filter: ${props => props.theme.name === "dark" ? "invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%)" : ''}
+
     }
 
     input {
@@ -54,10 +75,18 @@ export const Input = styled.div`
         width: 30rem;
         margin-left: 1rem;
         font-size: 1rem;
+        ::placeholder{
+            color: ${props => props.theme.colors.text};
+        }
+        background: ${props => props.theme.colors.elements};
 
         :focus{
             outline: none;
         }
+    }
+
+    @media (max-width: 700px) { 
+        width: 30rem;
     }
 `
 
@@ -66,5 +95,12 @@ export const CardList = styled.div`
     grid-template-columns: repeat(4, 1fr);
     gap: 8rem;
     width: 100%;
+
+    @media (max-width: 700px) { 
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        flex-direction: column;
+        width: 100%;
+    }
 `
 

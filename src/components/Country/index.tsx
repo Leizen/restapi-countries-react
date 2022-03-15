@@ -13,6 +13,7 @@ import {
   FooterDescription,
   Span,
   SpanFooter,
+  BorderList,
 } from "./styles";
 import leftArrowIcon from "../../assets/left-arrow.png";
 import { useEffect, useState } from "react";
@@ -127,13 +128,15 @@ export function Country({ countryInfo, handleSetHomepage }: CountryInfoProps) {
             </InfoDescription>
             <FooterDescription>
               <span>Border Countries:</span>
-              {Array.isArray(borders)
-                ? borders.map((value) => (
-                    <SpanFooter>
-                      <p>{value}</p>
-                    </SpanFooter>
-                  ))
-                : null}
+              <BorderList>
+                {Array.isArray(borders)
+                  ? borders.map((value) => (
+                      <SpanFooter>
+                        <p>{value}</p>
+                      </SpanFooter>
+                    ))
+                  : null}
+              </BorderList>
             </FooterDescription>
           </Info>
         </About>

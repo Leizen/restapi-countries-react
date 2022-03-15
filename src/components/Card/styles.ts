@@ -4,9 +4,14 @@ export const Container = styled.a`
     width: 20rem;
     height: 24rem;
     border: none;
-    background: var(--dark-mode-text-light-mode-elements);
+    background: ${props => props.theme.colors.elements};
     justify-self: center;
     border-radius: 0.5rem;
+
+    @media (max-width: 700px) { 
+        width: 25rem;
+        height: 29rem;
+    }
 `
 
 export const Flag = styled.div`
